@@ -1,10 +1,16 @@
 const express=require('express');
 const app=express();
 
+const bodyParser=require('body-parser');
+
 const PORT=process.env.PORT || 3000;
 
 require('dotenv/config');
 const api=process.env.API_URL
+
+
+//middleware
+app.use(bodyParser.json());
 
 app.get(`${api}/products`,(req,res)=>{
     const product={
