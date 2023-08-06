@@ -3,6 +3,8 @@ const app=express();
 
 const bodyParser=require('body-parser');
 
+const morgan=require('morgan');
+
 const PORT=process.env.PORT || 3000;
 
 require('dotenv/config');
@@ -11,6 +13,7 @@ const api=process.env.API_URL
 
 //middleware
 app.use(bodyParser.json());
+app.use(morgan('tiny'));
 
 app.get(`${api}/products`,(req,res)=>{
     const product={
